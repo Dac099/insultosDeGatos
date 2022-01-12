@@ -4,8 +4,8 @@
   "description": "Una pagina web para generar insultos de gatitos",
   "main": "src/js/index.js",
   "scripts": {
-    "runDev": "webpack --mode development",
-    "runPro": "webpack --mode production"
+    "dev": "webpack --mode development",
+    "pro": "webpack --mode production"
   },
   "keywords": [
     "js",
