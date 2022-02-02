@@ -23,20 +23,21 @@
     </article>
     <article class="text-card">
         <h2 class="text-card__title">Opciones de texto</h2>
-    
         <section class="text-card__text">
             <section class="text-card__insulto">
                 <input type="text" placeholder="Insulto personalizado">
-                <div>
+                <div class="insulto__option">
                     <label for="textOption">Insulto aleatorio</label>
                     <input type="radio" id="textOption" name="nameOption">
                 </div>
             </section>
             <section class="text_card__text-size">
-                <label for="tickmarks">Tamaño del texto</label><br>
-                <label for="tickmarks">0</label>
-                <input type="range" list="tickmarks" value="0">
-                <label for="tickmarks">80</label>
+                <label for="tickmarks">Tamaño del texto</label>
+                <div>
+                    <label for="tickmarks">0</label>
+                    <input type="range" list="tickmarks" value="0">
+                    <label for="tickmarks">80</label>
+                </div>
                 <datalist id="tickmarks">
                     <option value="10"></option>
                     <option value="20"></option>

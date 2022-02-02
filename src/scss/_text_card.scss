@@ -1,37 +1,97 @@
 .text-card
 {
+    max-width: 500px;
     display: grid;
     height: 30vh;
     grid-template-rows: 15% 85%;
     gap: 5px;
     font-family: $fontText;
-
+    
     &__title
     {
         align-self: end;
         border-bottom: 1px solid black;
-        
     }
     
     &__text
     {
         display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        font-size: 1.3rem;
+        grid-template-rows: 1fr 30px 1fr;
+        font-size: 1.4rem;
     }
     
     &__insulto
     {
         display: grid;
+        margin: 10px 0px 20px 0px;
         grid-template-rows: 1fr 1fr;
 
         > input
         {
-            width: 80%;
-            height: 90%;
-            margin: 0 auto;
+            min-width: 250px;
+            max-width: 400px;
+            height: minmax(90%,40px);
+            justify-self: center;
             padding: 5px;
             font-family: $fontText;
+            outline: none;
+        }
+
+        div.insulto__option
+        {
+            min-width: 250px;
+            max-width: 400px;
+            align-self: center;
+            justify-self: center;
+            height: minmax(90%,40px);
+            padding: 5px;
+            font-family: $fontText;
+        }
+    }
+
+    .text_card__text-size
+    {
+        display: grid;
+        max-width: 350px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        label
+        {
+            padding-top: 1px;
+        }
+
+        div
+        {
+            justify-self: end;
+            input
+            {
+                width: 100px;
+            }
+        }
+    }
+
+    .text-card__color-text
+    {
+        align-self: start;
+        display: grid;
+        margin-top: 10px;
+
+        label
+        {
+            width: fit-content;
+            justify-self: center;
+            align-self: end;
+        }
+
+        input
+        {
+            max-width: 250px;
+            max-height: 30px;
+            min-width: none;
+            justify-self: center;
+            align-self: start;
             outline: none;
         }
     }
