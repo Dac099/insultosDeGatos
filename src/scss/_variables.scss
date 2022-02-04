@@ -5,3 +5,16 @@ $fontText: 'Quicksand', sans-serif;
 $textColor: #252422;
 $secondaryTextColor: #EB5E28;
 $bgColor: #FFFCF2;
+
+@mixin card {
+    max-width: 400px;
+    min-width: none;
+    display: grid;
+    height: 30vh;
+    grid-template-rows: 15% 85%;
+    gap: 5px;
+    font-family: $fontText;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 400px;
+}

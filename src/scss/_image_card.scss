@@ -1,0 +1,21 @@
+.image-card
+{
+    @include card;
+
+    h2
+    {
+        align-self: end;
+        border-bottom: 1px solid black;
+        font-size: 1.7rem;
+    }
+
+    &__image
+    {
+        display: grid;
+        grid-template-rows: repeat(3,30px);
+        font-family: $fontText;
+        font-size: 1.4rem;
+        justify-content: center;
+        align-items: start;
+    }
+}

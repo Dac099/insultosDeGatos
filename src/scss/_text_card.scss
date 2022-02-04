@@ -1,16 +1,12 @@
 .text-card
 {
-    max-width: 500px;
-    display: grid;
-    height: 30vh;
-    grid-template-rows: 15% 85%;
-    gap: 5px;
-    font-family: $fontText;
+    @include card;
     
     &__title
     {
         align-self: end;
         border-bottom: 1px solid black;
+        font-size: 1.7rem;
     }
     
     &__text
@@ -93,6 +89,21 @@
             justify-self: center;
             align-self: start;
             outline: none;
+        }
+    }
+}
+
+@media (min-width: 380px) {
+    .text-card__insulto
+    {
+        > input
+        {
+            justify-self: start;
+        }
+
+        div.insulto__option
+        {
+            justify-self: start;
         }
     }
 }
