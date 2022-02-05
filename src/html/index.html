@@ -26,7 +26,7 @@
             <h2 class="text-card__title">Opciones de texto</h2>
             <section class="text-card__text">
                 <section class="text-card__insulto">
-                    <input type="text" placeholder="Insulto personalizado">
+                    <input type="text" placeholder="Insulto personalizado" class="insult-text">
                     <div class="insulto__option">
                         <label for="textOption">Insulto aleatorio</label>
                         <input type="radio" id="textOption" name="nameOption">
@@ -36,7 +36,7 @@
                     <label for="tickmarks">Tamaño del texto</label>
                     <div>
                         <label for="tickmarks">0</label>
-                        <input type="range" list="tickmarks" value="0">
+                        <input type="range" list="tickmarks" value="20" class="tickmarksRange">
                         <label for="tickmarks">80</label>
                     </div>
                     <datalist id="tickmarks">
@@ -47,7 +47,6 @@
                         <option value="50"></option>
                         <option value="60"></option>
                         <option value="70"></option>
-                        <option value="80"></option>
                     </datalist>
                 </section>
                 <section class="text-card__color-text">
@@ -85,7 +84,7 @@
                     <label for="image-card__gif">Gatito GIF</label>
                 </div>
                 <section class="image-card__filters">
-                    <input list="filters" placeholder="Tipo de filtro">
+                    <input list="filters" placeholder="Tipo de filtro" class="filters-input">
                     <datalist id="filters">
                         <option value="blur"></option>
                         <option value="mono"></option>
