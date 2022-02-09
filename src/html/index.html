@@ -51,8 +51,8 @@
                 </section>
                 <section class="text-card__color-text">
                     <label for="text-card__color-select">Selecciona un color</label>
-                    <input list="colors" name="text-card__color-select" id="text-card__color-select" placeholder="Color">         
-                    <datalist id="colors">
+                    <!-- <input list="colors" name="text-card__color-select" id="text-card__color-select" placeholder="Color">          -->
+                    <select id="colors">
                         <option value="red">Rojo</option>
                         <option value="salmon">Salmon</option>
                         <option value="darkred">Rojo oscuro</option>
@@ -68,7 +68,7 @@
                         <option value="black">Negro</option>
                         <option value="white">Blanco</option>
                         <option value="fuchsia">Fiusha</option>
-                    </datalist>
+                    </select>
                 </section>
             </section>
         </article>
@@ -84,15 +84,15 @@
                     <label for="image-card__gif">Gatito GIF</label>
                 </div>
                 <section class="image-card__filters">
-                    <input list="filters" placeholder="Tipo de filtro" class="filters-input">
-                    <datalist id="filters">
+                    <!-- <input list="filters" placeholder="Tipo de filtro" class="filters-input"> -->
+                    <select id="filters">
                         <option value="blur"></option>
                         <option value="mono"></option>
                         <option value="sepia"></option>
                         <option value="negative"></option>
                         <option value="pixel"></option>
                         <option value="paint"></option>
-                    </datalist>
+                    </select>
                 </section>
             </section>
         </article>
