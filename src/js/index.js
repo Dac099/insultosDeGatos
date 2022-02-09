@@ -27,14 +27,16 @@ const mediaBtnRequest = document.querySelector('.hero__btn-cat');
 const insultInputText = document.querySelector('.insult-text');
 const randomInsultOption = document.querySelector('#textOption');
 const textSizeInput = document.querySelector('.tickmarksRange');
-const colorTextInput = document.querySelector('#colors');
+const colorTextInput = document.querySelector('#text-card__color-select');
 const imageMediaInput = document.querySelector('#image-card__imagen');
 const gifMediaInput = document.querySelector('#image-card__gif');
-const filterMediaInput = document.querySelector('#filters');
+const filterMediaInput = document.querySelector('.filters-input');
+
+inputValuesListeners();
 
 //Primero: leer los elementos correspondientes a la URl del insulto y llamarla
 function inputValuesListeners(){
-    mediaBtnRequest.addEventListener('click', generateMediaCat);
+    // mediaBtnRequest.addEventListener('click', generateMediaCat);
 
     insultInputText.addEventListener('change', () => {
         const textInsult = insultInputText.value;
@@ -44,7 +46,8 @@ function inputValuesListeners(){
     randomInsultOption.addEventListener('change', () => {
         //Llamar a la API para extraer el insulto
         const randomInsult = getRandomInsult(insultUrl);
-        updateDataCat('insult', randomInsult);   
+        updateDataCat('insult', randomInsult); 
+        console.log(updateDataCat);  
     });
 
     textSizeInput.addEventListener('change', () => {
@@ -70,6 +73,30 @@ function inputValuesListeners(){
         updateDataCat('filterType', filterType);
     });
 
-    //CrearFunciones que se llaman en los listeners
-    //Construir la URL de cataas y llamarla para reconstruir el HTML y actualizar la imagen
+}
+//Construir la URL de cataas y llamarla para reconstruir el HTML y actualizar la imagen
+
+//CrearFunciones que se llaman en los listeners
+function updateDataCat(propertieName, propertieValue){
+    //Modificar objeto metaDataCat
+    // console.log(propertieValue);
+    // metaDataCat[propertieName] = propertieValue;
+    // console.log(metaDataCat);
+}
+
+function getRandomInsult(url){
+
+    fetch(url, {
+        'method': 'GET',
+        'mode': 'no-cors',
+        'headers': {
+            'Access-Control-Allow-Origin': '*',
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        const newData = JSON.stringify(data)
+        console.log(newData);
+    })
+    // .catch(error => console.log(new Error))
 }
