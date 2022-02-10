@@ -1,14 +1,11 @@
 import "../scss/main.scss";
 
-const catImageUrl = 'https://cataas.com/cat';
-const insultUrl = 'https://evilinsult.com/generate_insult.php?lang=es&type=json';
-
 //Objeto que determine el estado de todas mis condiciones para agregar datos a la URL
 //Actualizar el objeto cada que se cambie el valor de mis input
 
 const metaDataCat = {
     insult : 'Huevos',
-    textSize: 20,
+    textSize: '20',
     textColor: 'white',
     gifOrImage: 'gif',
     filterType: ''
@@ -25,7 +22,6 @@ const metaDataCat = {
 const catMediaContainer = document.querySelector('.hero__media-cat');
 const mediaBtnRequest = document.querySelector('.hero__btn-cat');
 const insultInputText = document.querySelector('.insult-text');
-const randomInsultOption = document.querySelector('#textOption');
 const textSizeInput = document.querySelector('.tickmarksRange');
 const colorTextInput = document.querySelector('#text-card__color-select');
 const imageMediaInput = document.querySelector('#image-card__imagen');
@@ -36,18 +32,11 @@ inputValuesListeners();
 
 //Primero: leer los elementos correspondientes a la URl del insulto y llamarla
 function inputValuesListeners(){
-    // mediaBtnRequest.addEventListener('click', generateMediaCat);
+    mediaBtnRequest.addEventListener('click', generateMediaCat);
 
     insultInputText.addEventListener('change', () => {
         const textInsult = insultInputText.value;
         updateDataCat('insult', textInsult);
-    });
-
-    randomInsultOption.addEventListener('change', () => {
-        //Llamar a la API para extraer el insulto
-        const randomInsult = getRandomInsult(insultUrl);
-        updateDataCat('insult', randomInsult); 
-        console.log(updateDataCat);  
     });
 
     textSizeInput.addEventListener('change', () => {
@@ -79,24 +68,39 @@ function inputValuesListeners(){
 //CrearFunciones que se llaman en los listeners
 function updateDataCat(propertieName, propertieValue){
     //Modificar objeto metaDataCat
-    // console.log(propertieValue);
-    // metaDataCat[propertieName] = propertieValue;
-    // console.log(metaDataCat);
+    metaDataCat[propertieName] = propertieValue;
+    console.log(metaDataCat);
 }
 
-function getRandomInsult(url){
+function generateMediaCat(){
+    //generate URL
+    const catImageUrl = filterDataCat();
 
-    fetch(url, {
-        'method': 'GET',
-        'mode': 'no-cors',
-        'headers': {
-            'Access-Control-Allow-Origin': '*',
-        }
-    })
-    .then(res => res.json())
-    .then(data => {
-        const newData = JSON.stringify(data)
-        console.log(newData);
-    })
-    // .catch(error => console.log(new Error))
+    console.log(catImageUrl);  
+}
+
+//https://cataas.com/cat/gif/says/Hello?filter=sepia&color=orange&size=40&type=or
+function filterDataCat(){
+
+    //Cosas que hacer despues para mejorar la APP
+        //Ofrecer la opcion de editar el mismo gato o buscar uno nuevo
+        //Hacer la peticion en JSON para extraer el id del gato
+        //Si eligen el mismo gato:
+            //Despues construir la URL con los parametros de metaDataCat y la URL
+        //Si no, regresar al primer paso
+
+    const {insult, textSize, textColor, gifOrImage, filterType} = metaDataCat;
+    let baseUrl;
+
+    if(gifOrImage === 'gif'){
+        baseUrl = `https://cataas.com/cat/gif/says/:${insult}?color=${textColor}&size=${textSize}&type=or`;
+    }else{
+        baseUrl = `https://cataas.com/cat/says/:${insult}?color=${textColor}&size=${textSize}&type=or`;
+    }
+
+    if(filterType != ''){
+        baseUrl = `https://cataas.com/cat/says/:${insult}?color=${textColor}&size=${textSize}&type=or&filter=${filterType}`;
+    }
+    
+    return baseUrl;
 }
