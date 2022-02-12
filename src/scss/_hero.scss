@@ -28,6 +28,13 @@
         background-color: $textColor;
     }
 
+    .hero__img-cat
+    {
+        width: 200px;
+        height: 200px;
+        border-radius: 15%;
+    }
+
     h1
     {
         justify-self: center;
@@ -45,6 +52,7 @@
         grid-row: 4 / 5;
         grid-column: 1 / 2;
         align-self: flex-start;
+        cursor: pointer;
     }
     
 }

@@ -32,10 +32,24 @@ inputValuesListeners();
 
 //Primero: leer los elementos correspondientes a la URl del insulto y llamarla
 function inputValuesListeners(){
-    mediaBtnRequest.addEventListener('click', generateMediaCat);
+    mediaBtnRequest.addEventListener('click', () => {
+        if(catMediaContainer.firstChild != null){
+            const imgCat = catMediaContainer.firstChild;
+            catMediaContainer.removeChild(imgCat);
+            generateMediaCat();
+        }else{
+            generateMediaCat();
+        }
+    });
 
     insultInputText.addEventListener('change', () => {
-        const textInsult = insultInputText.value;
+        let textInsult = insultInputText.value;
+        let wordsInsult = textInsult.split(' ');
+        
+        if(wordsInsult.lenght > 1){
+            textInsult = wordsInsult.join('%20');
+        }
+
         updateDataCat('insult', textInsult);
     });
 
@@ -69,14 +83,16 @@ function inputValuesListeners(){
 function updateDataCat(propertieName, propertieValue){
     //Modificar objeto metaDataCat
     metaDataCat[propertieName] = propertieValue;
-    console.log(metaDataCat);
 }
 
 function generateMediaCat(){
     //generate URL
     const catImageUrl = filterDataCat();
-
-    console.log(catImageUrl);  
+    console.log(catImageUrl);
+    const imgElement = document.createElement('img');
+    imgElement.src = catImageUrl;
+    imgElement.classList.add('hero__img-cat');
+    catMediaContainer.append(imgElement);   
 }
 
 //https://cataas.com/cat/gif/says/Hello?filter=sepia&color=orange&size=40&type=or
@@ -93,13 +109,17 @@ function filterDataCat(){
     let baseUrl;
 
     if(gifOrImage === 'gif'){
-        baseUrl = `https://cataas.com/cat/gif/says/:${insult}?color=${textColor}&size=${textSize}&type=or`;
+        if(filterType != ''){
+            baseUrl = `https://cataas.com/cat/gif/says/${insult}?color=${textColor}&size=${textSize}&type=or&filter=${filterType}`;
+        }else{
+            baseUrl = `https://cataas.com/cat/gif/says/${insult}?color=${textColor}&size=${textSize}&type=or`;
+        }
     }else{
-        baseUrl = `https://cataas.com/cat/says/:${insult}?color=${textColor}&size=${textSize}&type=or`;
-    }
-
-    if(filterType != ''){
-        baseUrl = `https://cataas.com/cat/says/:${insult}?color=${textColor}&size=${textSize}&type=or&filter=${filterType}`;
+        if(filterType != ''){
+            baseUrl = `https://cataas.com/cat/says/${insult}?color=${textColor}&size=${textSize}&type=or&filter=${filterType}`;
+        }else{
+            baseUrl = `https://cataas.com/cat/says/${insult}?color=${textColor}&size=${textSize}&type=or`;
+        }
     }
     
     return baseUrl;
