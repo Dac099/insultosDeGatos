@@ -45,13 +45,15 @@
         align-self: center;
     }
 
-    .hero__btn-cat
+    .hero__btns
     {
         justify-self: center;
         grid-row: 4 / 5;
         grid-column: 1 / 2;
-        align-self: flex-start;
+        align-self: start;
         cursor: pointer;
+
+        display: flex;
     }
     
 }

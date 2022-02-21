@@ -8,7 +8,8 @@ const metaDataCat = {
     textSize: '20',
     textColor: 'white',
     gifOrImage: 'gif',
-    filterType: ''
+    filterType: '',
+    id: ''
 };
 
 /**
@@ -87,12 +88,23 @@ function updateDataCat(propertieName, propertieValue){
 
 function generateMediaCat(){
     //generate URL
-    const catImageUrl = filterDataCat();
-    console.log(catImageUrl);
-    const imgElement = document.createElement('img');
-    imgElement.src = catImageUrl;
-    imgElement.classList.add('hero__img-cat');
-    catMediaContainer.append(imgElement);   
+    // const catImageUrl = filterDataCat();
+    // console.log(catImageUrl);
+    // const imgElement = document.createElement('img');
+    // imgElement.src = catImageUrl;
+    // imgElement.classList.add('hero__img-cat');
+    // catMediaContainer.append(imgElement);   
+
+    //hacer la peticion de un gato aleatorio en JSON
+    //Agregar un boton a la UI donde se llame otro gato aleatorio o se modifique el actual
+    getJsonCat()
+}
+
+function getJsonCat(){
+    let URL = 'https://cataas.com/cat?json=true'
+    fetch(URL)
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
 
 //https://cataas.com/cat/gif/says/Hello?filter=sepia&color=orange&size=40&type=or
